@@ -70,6 +70,8 @@ function connectAudioElement()
 // Draw bars on canvas
 function draw()
 {
+	canvas.width = window.innerWidth;
+	canvas.height = window.innerHeight;
 	if (!analyser) return;
 	analyser.getByteFrequencyData(dataArray);
 	ctx.fillStyle = 'black';
@@ -114,6 +116,7 @@ startBtn.addEventListener('click', () =>
 {
 	console.log('Start clicked');
 	initAudio();
+	canvas.style.visibility = 'visible';
 	setTimeout(() =>
 	{
 		if (audioContext)
@@ -133,7 +136,8 @@ stopBtn.addEventListener('click', () =>
 	{
 		cancelAnimationFrame(animationId);
 	}
-	ctx.fillStyle = '#ffffff';
+	ctx.fillStyle = '#000000';
+	canvas.style.visibility = 'hidden';
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 });
 
@@ -161,5 +165,3 @@ function applyPageFilterFromFFT(dataArray)
 	const saturate = 1 + level * 0.5;
 	document.body.style.filter = `hue-rotate(${hue}deg) ` + `brightness(${brightness}) ` + `saturate(${saturate}) `;
 }
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
