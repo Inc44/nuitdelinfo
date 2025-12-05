@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sésame — Authentification Rythmique</title>
+	<link rel="stylesheet" href="../styles/variables.css">
+	<link rel="stylesheet" href="auth.css">
+</head>
+
+<body>
+	<div class="auth-container">
+		<div class="auth-card">
+			<div class="auth-header">
+				<div class="auth-icon">🎵</div>
+				<h1>Sésame</h1>
+				<p class="auth-subtitle">Tapez votre rythme secret</p>
+			</div>
+			<div class="auth-tabs">
+				<button class="tab-btn active" data-mode="login">Connexion</button>
+				<button class="tab-btn" data-mode="register">Inscription</button>
+			</div>
+			<div class="auth-body">
+				<div class="input-group">
+					<label for="username">Identifiant</label>
+					<input type="text" id="username" placeholder="votre_nom" maxlength="32" autocomplete="off">
+				</div>
+				<div class="rhythm-zone" id="rhythm-zone">
+					<div class="rhythm-prompt">
+						<span class="rhythm-icon">👆</span>
+						<span id="rhythm-instruction">Cliquez ou appuyez sur Espace</span>
+					</div>
+					<div class="rhythm-visualizer" id="rhythm-visualizer"></div>
+					<div class="rhythm-counter">
+						<span id="tap-count">0</span> / <span id="tap-target">8</span> taps
+					</div>
+				</div>
+				<div class="rhythm-controls">
+					<button class="btn-reset" id="btn-reset">↺ Recommencer</button>
+				</div>
+				<button class="btn-submit" id="btn-submit" disabled>Vérifier le rythme</button>
+				<div class="auth-feedback" id="feedback"></div>
+			</div>
+		</div>
+		<div class="auth-help">
+			<details>
+				<summary>Comment ça marche ?</summary>
+				<p><strong>Inscription :</strong> Tapez un rythme de 8 à 16 taps. Le timing entre chaque tap devient votre mot de passe.</p>
+				<p><strong>Connexion :</strong> Reproduisez votre rythme. Une tolérance de 15% est acceptée.</p>
+				<p><strong>Astuce :</strong> Pensez à une chanson ou un motif mémorable !</p>
+			</details>
+		</div>
+	</div>
+	<script src="auth.js"></script>
+</body>
+
+</html>
