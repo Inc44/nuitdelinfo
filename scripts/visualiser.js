@@ -1,8 +1,6 @@
 const audioPlayer = document.getElementById('audioPlayer');
 const canvas = document.getElementById('visualiser');
 const ctx = canvas.getContext('2d');
-const startBtn = document.getElementById('startBtn');
-const stopBtn = document.getElementById('stopBtn');
 let audioContext;
 let analyser;
 let dataArray;
@@ -111,35 +109,43 @@ function lerp(a, b, t)
 {
 	return a + (b - a) * t;
 }
-// Start visualizer
-startBtn.addEventListener('click', () =>
+// Initialize visualizer controls after components are loaded
+function initVisualizer()
 {
-	console.log('Start clicked');
-	initAudio();
-	canvas.style.visibility = 'visible';
-	setTimeout(() =>
+	const startBtn = document.getElementById('startBtn');
+	const stopBtn = document.getElementById('stopBtn');
+	if (!startBtn || !stopBtn) return;
+	// Start visualizer
+	startBtn.addEventListener('click', () =>
 	{
-		if (audioContext)
+		console.log('Start clicked');
+		initAudio();
+		canvas.style.visibility = 'visible';
+		setTimeout(() =>
 		{
-			audioPlayer.play()
-				.catch(err => console.error('Play error:', err));
-			draw();
-		}
-	}, 150);
-});
-// Stop visualizer
-stopBtn.addEventListener('click', () =>
-{
-	console.log('Stop clicked');
-	audioPlayer.pause();
-	if (animationId)
+			if (audioContext)
+			{
+				audioPlayer.play()
+					.catch(err => console.error('Play error:', err));
+				draw();
+			}
+		}, 150);
+	});
+	// Stop visualizer
+	stopBtn.addEventListener('click', () =>
 	{
-		cancelAnimationFrame(animationId);
-	}
-	ctx.fillStyle = '#000000';
-	canvas.style.visibility = 'hidden';
-	ctx.fillRect(0, 0, canvas.width, canvas.height);
-});
+		console.log('Stop clicked');
+		audioPlayer.pause();
+		if (animationId)
+		{
+			cancelAnimationFrame(animationId);
+		}
+		ctx.fillStyle = '#000000';
+		canvas.style.visibility = 'hidden';
+		ctx.fillRect(0, 0, canvas.width, canvas.height);
+		document.body.style.filter = '';
+	});
+}
 
 function applyPageFilterFromFFT(dataArray)
 {

@@ -293,6 +293,7 @@
 	align-items: center;
 	gap: 0.375rem;
 	box-shadow: var(--shadow-md);
+	cursor: pointer;
 }
 
 .floating-badge.top
