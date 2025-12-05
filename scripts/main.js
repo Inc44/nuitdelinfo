@@ -34,6 +34,7 @@ async function loadAllComponents()
 	new PureCounter();
 	if (typeof initQuiz === 'function') initQuiz();
 	if (typeof initChatbot === 'function') initChatbot();
+	if (typeof initCarousel === 'function') initCarousel();
 	if (typeof initVisualizer === 'function') initVisualizer();
 }
 document.addEventListener('DOMContentLoaded', loadAllComponents);

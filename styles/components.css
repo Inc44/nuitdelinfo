@@ -1219,3 +1219,71 @@
 	pointer-events: none;
 	background: transparent;
 }
+
+.carousel-scene
+{
+	width: 100%;
+	height: 13.75rem;
+	position: relative;
+	margin: 0 auto;
+}
+
+.carousel-nav
+{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--space-lg);
+	margin-top: var(--space-xl);
+}
+
+.carousel-btn
+{
+	background: var(--bg-card);
+	border: var(--border);
+	color: var(--purple-400);
+	width: 3rem;
+	height: 3rem;
+	border-radius: 50%;
+	cursor: pointer;
+	font-size: 1.2rem;
+	transition: all var(--transition-base);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.carousel-btn:hover
+{
+	background: var(--gradient-primary);
+	border-color: transparent;
+	color: white;
+	box-shadow: var(--glow-purple);
+}
+
+.carousel-dots
+{
+	display: flex;
+	gap: var(--space-sm);
+}
+
+.carousel-dot
+{
+	width: 0.625rem;
+	height: 0.625rem;
+	border-radius: 50%;
+	background: var(--border-default);
+	cursor: pointer;
+	transition: all var(--transition-fast);
+}
+
+.carousel-dot.active
+{
+	background: var(--purple-500);
+	box-shadow: 0 0 0.5rem var(--purple-500);
+}
+
+.carousel-dot:hover
+{
+	background: var(--purple-400);
+}
